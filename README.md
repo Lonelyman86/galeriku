@@ -13,7 +13,7 @@
 - Github
 - PHP versi 8.2
 
-## Menggunakan aplikasi/website Bluespace
+## Menggunakan aplikasi/website Galeriku
 Untuk bisa mengakses website ini, anda tinggal membuat akun pada halaman sign up lalu sign in.
 
 ## Entity Relationship Diagram, Unified Modeling Language, dan Relasi
@@ -84,7 +84,7 @@ Beberapa fitur di bawah ini yang sudah berjalan dengan baik, diantaranya :
 
 
 ## Note
-Website masih dalam proses pengembangan sehingga masih ada beberapa fitur yang belum bisa digunakan seperti delete post, delete komentar, dan delete album. untuk itu, disarankan untuk menggunakan fitur yang sudah berjalan seperti posting foto, like, comment atau membuat album. Terima Kasih <3
+Website masih dalam proses pengembangan sehingga masih ada beberapa fitur yang belum bisa digunakan seperti delete komentar, dan delete album. untuk itu, disarankan untuk menggunakan fitur yang sudah berjalan seperti posting foto, like, comment atau membuat album. Terima Kasih <3
 
 ## Terakhir, Instalasi
 1. Clone Repository
