@@ -210,7 +210,7 @@ a:hover {
 @endif
 
   <div class="wrapper bg-white">
-    <div class="h2 text-center">Bluespace</div>
+    <div class="h2 text-center">Galeriku</div>
     <div class="h4 text-muted text-center pt-2">Enter your login details</div>
     <form class="pt-3" action="/sign-in" method="post">
       @csrf

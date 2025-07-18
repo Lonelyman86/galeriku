@@ -66,7 +66,16 @@
                             <b>@auth {{ $user->username }} @endauth</b>
                             @endforeach</span>
                         <div class="card-tombol-01">
-                                <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#ContohModal{{$item->id}}">Details</button>
+                        @auth {{-- Memastikan pengguna sudah login --}}
+                                @if(Auth::id() == $item->user_id) {{-- Membandingkan ID pengguna yang login dengan user_id foto --}}
+                                {{-- FORM UNTUK TOMBOL DELETE --}}
+<form action="{{ route('photos.destroy', $item->id)}}" method="POST" style="display:inline;">
+    @csrf
+    @method('delete') {{-- Ini adalah kuncinya! --}}
+    <button type="submit" class="tombol-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus foto ini?')">Delete</button>
+</form>
+                                @endif
+                            @endauth
                                 <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#Albummodal{{$item->id}}">Album</button>
                         </div>
                     </div>
@@ -155,6 +164,7 @@
             </div>
     </div>
 
+    @if ($albums->count() > 0)
     <div class="album">
         <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin:21px;">My Album</h1>
         <div class="grid-container-02">
@@ -168,5 +178,9 @@
             @endforeach
         </div>
     </div>
+@else
+    <p style="margin: 21px; color: gray;">Anda belum memiliki album.</p>
+@endif
+
 
 @endsection

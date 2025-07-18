@@ -94,6 +94,13 @@ class FotoController extends Controller
             Storage::disk('public')->delete('foto/' . $photo->lokasi_file);
         }
 
+ // Hapus semua likes terkait foto ini
+ $photo->like()->delete();
+
+ // Hapus semua komentar terkait foto ini (kalau perlu)
+ $photo->komentarfoto()->delete();
+
+
         $photo->delete();
 
         return redirect()->back()->with('success', 'Foto berhasil dihapus!');

@@ -46,4 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function likedPhotos()
+{
+    return $this->belongsToMany(Foto::class, 'likefoto', 'user_id', 'foto_id')->withTimestamps();
+}
 }

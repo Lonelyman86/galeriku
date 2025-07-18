@@ -9,8 +9,9 @@ class Album extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    protected $fillable = ['nama_album', 'deskripsi'];
+    // Gunakan hanya salah satu: ini lebih aman
+    protected $fillable = ['nama_album', 'deskripsi', 'user_id'];
+
     protected $table = 'albums';
 
     public function user()

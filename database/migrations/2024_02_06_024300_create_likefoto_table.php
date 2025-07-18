@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('likefoto', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('foto_id');
-            $table->foreign('foto_id')->references('id')->on('foto');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
 
+            $table->foreign('foto_id')->references('id')->on('foto')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            // ⬇️ Tambahkan ini agar user tidak bisa like foto yang sama dua kali
+            $table->unique(['user_id', 'foto_id']);
         });
     }
 

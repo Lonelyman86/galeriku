@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Foto;
 use App\Models\Komentar;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class AlbumController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('pages.albumaction.createalbum', [
             'title' => 'Create Album'
         ]);
@@ -18,26 +21,38 @@ class AlbumController extends Controller
     public function store(Request $r)
     {
         $v = $r->validate([
-            'user_id' => 'required',
-            'nama_album' => 'required|unique:albums',
+            'nama_album' => [
+                'required',
+                Rule::unique('albums')->where(function ($query) {
+                    return $query->where('user_id', Auth::id());
+                })
+            ],
             'deskripsi' => 'required',
         ]);
-Album::create($v);
-return redirect('/studio');
+
+        $v['user_id'] = Auth::id(); // Ambil ID user yang login
+        Album::create($v);
+
+        return redirect('/studio');
     }
+
     public function show(Album $album)
     {
+        // Cegah akses jika album bukan milik user yang login
+        if ($album->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized access to album.');
+        }
+
         $foto = Foto::where('album_id', $album->id)->get();
         $komentar = Komentar::all();
-        $albumOption = Album::all();
+        $albumOption = Album::where('user_id', Auth::id())->get();
+
         return view('ShowAlbum', [
-            'title' => 'Album/' . $album->nama_album,
+            'title' => 'Album / ' . $album->nama_album,
             'album' => $album,
             'albumOption' => $albumOption,
-            "foto" => $foto ,
-            "comments" => $komentar
+            'foto' => $foto,
+            'comments' => $komentar
         ]);
     }
-
-
 }

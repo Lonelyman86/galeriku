@@ -7,40 +7,5 @@
             </ol>
             <h6 class="font-weight-bolder mb-0"> {{ $title ?? 'Dashboard' }} </h6> {{-- Gunakan ?? untuk nilai default jika $title tidak ada --}}
         </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <div class="input-group input-group-outline">
-                    <label class="form-label">Type here...</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-
-            <ul class="navbar-nav justify-content-end">
-                @auth
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Welcome back, {{ auth()->user()->username }}
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">My Post</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <form action="/logout" method="post">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @else
-                    <li class="nav-item d-flex align-items-center">
-                        <a href="/sign-in" class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Sign In</span>
-                        </a>
-                    </li>
-                @endauth
-            </ul>
-        </div>
     </div>
 </nav>

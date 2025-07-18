@@ -31,17 +31,18 @@
   <!-- sidebar -->
   @include('components/sidebar')
   <!-- End Sidebar -->
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+  <main class="main-content position-relative  h-100 border-radius-lg ">
     <!-- Navbar -->
     @include('components/navbar')
     <!-- End Navbar -->
 
     @yield('content')
+    
     {{-- Footer --}}
-        @include('components/footer')
+        
     </div>
     {{-- End Footer --}}
-
+@include('components/footer')
   </main>
 
   <!--   Core JS Files   -->
