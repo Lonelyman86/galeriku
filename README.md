@@ -1,7 +1,7 @@
 <h1 align="center">Bluespace</h1>
 
 ## Tentang
-<p>Bluespace merupakan sebuah website kecil yang dibuat untuk menyimpan gambar layaknya sebuah gallery.</p>
+<p>Galeriku merupakan sebuah website kecil yang dibuat untuk menyimpan gambar layaknya sebuah gallery.</p>
 
 ## Tools yang digunakan
 
