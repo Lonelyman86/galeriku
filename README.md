@@ -1,4 +1,4 @@
-<h1 align="center">Bluespace</h1>
+<h1 align="center">Galeriku</h1>
 
 ## Tentang
 <p>Galeriku merupakan sebuah website kecil yang dibuat untuk menyimpan gambar layaknya sebuah gallery.</p>
